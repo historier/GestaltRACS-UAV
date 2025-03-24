@@ -5,7 +5,7 @@ import cv2
 import numpy as np
 
 
-def normalize_images(images_dir, labels_dir, output_images_dir):
+def normalize_images(images_dir,  output_images_dir):
     # 创建输出图像文件夹
     os.makedirs(output_images_dir, exist_ok=True)
 
@@ -26,29 +26,15 @@ def normalize_images(images_dir, labels_dir, output_images_dir):
         # 保存归一化后的图片
         cv2.imwrite(output_image_path, normalized_image)
 
-        # 构建对应的标注文件路径
-        label_file = os.path.splitext(image_file)[0] + '.txt'
-        label_path = os.path.join(labels_dir, label_file)
-        output_label_path = os.path.join(os.path.dirname(output_images_dir), 'labels', label_file)
-
-        # 确保输出 labels 文件夹存在
-        os.makedirs(os.path.dirname(output_label_path), exist_ok=True)
-
-        # 复制标注文件到新的位置
-        if os.path.exists(label_path):
-            with open(label_path, 'r') as src_file, open(output_label_path, 'w') as dst_file:
-                dst_file.write(src_file.read())
-
+       
 
 if __name__ == "__main__":
     # 数据集文件夹路径
-    dataset_dir = 'dataset'
+    dataset_dir = 'HIT-UAV-Processed-Dataset'
     # images 文件夹路径
     images_dir = os.path.join(dataset_dir, 'images')
-    # labels 文件夹路径
-    labels_dir = os.path.join(dataset_dir, 'labels')
     # 输出归一化图片的文件夹路径
     output_images_dir = os.path.join(dataset_dir, 'normalized_images')
 
-    normalize_images(images_dir, labels_dir, output_images_dir)
+    normalize_images(images_dir, output_images_dir)
     
