@@ -115,7 +115,7 @@ if __name__ == "__main__":
   
     annotations_dir = 'HIT-UAV-Infrared-Thermal-Dataset-main/rotate_xml/Annotations'
     images_dir = 'HIT-UAV-Infrared-Thermal-Dataset-main/rotate_xml/JPEGImages'
-    output_dir = 'dataset'
+    output_dir = 'HIT-UAV-Processed-Dataset'
 
     convert_xml_to_txt(annotations_dir, images_dir, output_dir)
 
